@@ -72,7 +72,7 @@
   <body>
     <ul>
       {{- range .List }}
-        <li><dl><dt><a href="{{.Name}}">{{.Name}}</a></dt><dd>{{.ModTime.Format "Jan. _2 '06 15:04:05"}}</dd><dd>{{.Size}}</dd></dl></li>
+        <li><dl><dt><a href="{{.Name}}">{{.Name}}</a></dt><dd>{{.ModTime.Format "Jan. _2 '06 15:04:05"}}</dd><dd>{{mega .Size}} MB</dd></dl></li>
       {{- else}}
         <li>...</li>
       {{- end}}
