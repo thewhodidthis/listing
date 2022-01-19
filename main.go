@@ -63,7 +63,7 @@ func main() {
 
 	fm := template.FuncMap{
 		"mega": func(b int64) string {
-			return fmt.Sprintf("%.8f", float64(b) / (1 << 20))
+			return fmt.Sprintf("%.3f", float64(b) / (1 << 20))
 		},
 	}
 
