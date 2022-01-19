@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ .Title }}</title>
+    <style>
+      html {
+        font: 16px/1 sans-serif;
+        height: 100%;
+      }
+      body {
+        align-items: center;
+        display: flex;
+        margin: 0;
+        min-height: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+      a:not([href*="."]) {
+        font-size: 0.875rem;
+        font-weight: bold;
+      }
+      a:hover {
+        color: #f00;
+      }
+      ul {
+        box-sizing: border-box;
+        flex: 1;
+        margin: 0;
+        padding: 2rem;
+        width: 100%;
+      }
+      li {
+        border-top: 1px dotted #ddd;
+        display: flex;
+      }
+      li:last-child {
+        border-bottom: 1px dotted #ddd;
+      }
+      li:hover {
+        background: #f9f9f9;
+      }
+      dl {
+        font-size: 0.75rem;
+        margin: 0 auto;
+        max-width: 50rem;
+        width: 100%;
+      }
+      dt {
+        width: 50%;
+        font-size: 0.9375rem;
+      }
+      dd {
+        font-family: "Menlo", "Andale Mono", monospace;
+        margin: 0;
+        text-align: right;
+        width: 25%;
+      }
+      dt,
+      dd {
+        box-sizing: border-box;
+        display: inline-block;
+        overflow: hidden;
+        padding: 0.5rem 0.25rem;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      {{- range .List }}
+        <li><dl><dt><a href="{{.Name}}">{{.Name}}</a></dt><dd>{{.ModTime.Format "Jan. _2 '06 15:04:05"}}</dd><dd>{{.Size}}</dd></dl></li>
+      {{- else}}
+        <li>...</li>
+      {{- end}}
+    </ul>
+  </body>
+</html>
