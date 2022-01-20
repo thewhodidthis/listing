@@ -28,6 +28,7 @@
       ul {
         box-sizing: border-box;
         flex: 1;
+        font-size: 0.75rem;
         list-style: none;
         margin: 0;
         padding: 2rem;
@@ -35,6 +36,7 @@
       }
       li {
         border-top: 1px dotted #ddd;
+        padding: 0.5rem 0.25rem;
       }
       li:last-child {
         border-bottom: 1px dotted #ddd;
@@ -43,32 +45,36 @@
         background: #f9f9f9;
       }
       dl {
+        align-items: center;
         display: grid;
-        font-size: 0.75rem;
         margin: 0 auto;
         max-width: 50rem;
         width: 100%;
         grid: auto-flow / 1fr 1fr 1fr;
       }
       dt {
-        width: 50%;
         font-size: 0.9375rem;
       }
       dd {
         font-family: "Menlo", "Andale Mono", monospace;
         margin: 0;
         text-align: right;
-        width: 25%;
       }
       dt,
       dd {
         box-sizing: border-box;
         overflow: hidden;
-        padding: 0.5rem 0.25rem;
+        padding: 0 0.25rem;
         text-overflow: ellipsis;
         vertical-align: middle;
         white-space: nowrap;
         width: 100%;
+      }
+      dt:first-child {
+        padding-left: 0;
+      }
+      dd:last-child {
+        padding-right: 0;
       }
     </style>
   </head>
@@ -85,7 +91,7 @@
           </dl>
         </li>
       {{- else}}
-        <li>...</li>
+        <li>&hellip;</li>
       {{- end}}
     </ul>
   </body>
