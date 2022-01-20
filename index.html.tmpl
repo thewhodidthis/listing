@@ -17,7 +17,8 @@
       a {
         text-decoration: none;
       }
-      a:not([href*="."]) {
+      a:not([href*="."]),
+      a[href*="//"] {
         font-size: 0.875rem;
         font-weight: bold;
       }
@@ -27,13 +28,13 @@
       ul {
         box-sizing: border-box;
         flex: 1;
+        list-style: none;
         margin: 0;
         padding: 2rem;
         width: 100%;
       }
       li {
         border-top: 1px dotted #ddd;
-        display: flex;
       }
       li:last-child {
         border-bottom: 1px dotted #ddd;
@@ -42,10 +43,12 @@
         background: #f9f9f9;
       }
       dl {
+        display: grid;
         font-size: 0.75rem;
         margin: 0 auto;
         max-width: 50rem;
         width: 100%;
+        grid: auto-flow / 1fr 1fr 1fr;
       }
       dt {
         width: 50%;
@@ -60,19 +63,27 @@
       dt,
       dd {
         box-sizing: border-box;
-        display: inline-block;
         overflow: hidden;
         padding: 0.5rem 0.25rem;
         text-overflow: ellipsis;
         vertical-align: middle;
         white-space: nowrap;
+        width: 100%;
       }
     </style>
   </head>
   <body>
     <ul>
       {{- range .List }}
-        <li><dl><dt><a href="{{.Name}}">{{.Name}}</a></dt><dd>{{.ModTime.Format "Jan. 02 '06 15:04:05"}}</dd><dd>{{.Size}}</dd></dl></li>
+        <li>
+          <dl>
+            <dt>
+              <a href="{{.Name}}{{if .IsDir}}/{{end}}">{{.Name}}</a>
+            </dt>
+            <dd>{{.ModTime.Format "Jan. 02 '06 15:04:05"}}</dd>
+            <dd>{{.Size}}</dd>
+          </dl>
+        </li>
       {{- else}}
         <li>...</li>
       {{- end}}
