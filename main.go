@@ -4,7 +4,6 @@ import (
 	"bufio"
 	_ "embed"
 	"flag"
-	"fmt"
 	"html/template"
 	"io/fs"
 	"log"
@@ -61,13 +60,7 @@ func main() {
 		infos = append(infos, fi)
 	}
 
-	fm := template.FuncMap{
-		"mega": func(b int64) string {
-			return fmt.Sprintf("%.3f", float64(b) / (1 << 20))
-		},
-	}
-
-	t, err := template.New("listing").Funcs(fm).Parse(tmpl)
+	t, err := template.New("default").Parse(tmpl)
 
 	check(err)
 
