@@ -19,39 +19,32 @@
       }
       a:not([href*="."]),
       a[href*="//"] {
-        font-size: 0.875rem;
         font-weight: bold;
       }
       a:hover {
         color: #f00;
       }
-      ul {
+      main {
         box-sizing: border-box;
         flex: 1;
-        font-size: 0.9375rem;
-        list-style: none;
         margin: 0;
         padding: 2rem;
         width: 100%;
       }
-      li {
+      hr {
+        border: unset;
         border-top: 1px dotted #ddd;
-        padding: 0.5rem 0.25rem;
       }
-      li:last-child {
-        border-bottom: 1px dotted #ddd;
-      }
-      li:hover {
-        background: #f9f9f9;
+      dl,
+      p {
+        margin: 0 auto;
+        max-width: 50rem;
       }
       dl {
         align-items: center;
         display: grid;
         grid: auto-flow / 1fr 1fr 1fr;
         grid-gap: 0.5rem;
-        margin: 0 auto;
-        max-width: 50rem;
-        width: 100%;
       }
       dd {
         font: 0.75rem/1 "Menlo", "Andale Mono", monospace;
@@ -62,7 +55,6 @@
       dd {
         box-sizing: border-box;
         overflow: hidden;
-        padding: 0 0.25rem;
         text-overflow: ellipsis;
         vertical-align: middle;
         white-space: nowrap;
@@ -71,20 +63,23 @@
     </style>
   </head>
   <body>
-    <ul>
-      {{- range .List }}
-        <li>
-          <dl>
-            <dt>
-              <a href="{{.Name}}{{if .IsDir}}/{{end}}">{{.Name}}</a>
-            </dt>
-            <dd>{{.ModTime.Format "Jan. 02 '06 15:04:05"}}</dd>
-            <dd>{{.Size}}</dd>
-          </dl>
-        </li>
-      {{- else}}
-        <li><span>&hellip;</span></li>
+    <main>
+      <hr>
+      {{- range $i, $info := .List}}
+      {{- if gt $i 0}}
+      <hr>
       {{- end}}
-    </ul>
+      <dl>
+        <dt>
+          <a href="{{.Name}}{{if .IsDir}}/{{end}}">{{.Name}}</a>
+        </dt>
+        <dd>{{.ModTime.Format "Jan. 02 '06 15:04:05"}}</dd>
+        <dd>{{.Size}}</dd>
+      </dl>
+      {{- else}}
+      <p>&hellip;</p>
+      {{- end}}
+      <hr>
+    </main>
   </body>
 </html>
