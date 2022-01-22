@@ -60,10 +60,6 @@ func main() {
 		infos = append(infos, fi)
 	}
 
-	t, err := template.New("default").Parse(tmpl)
-
-	check(err)
-
 	data := struct {
 		List []fs.FileInfo
 		Title string
@@ -71,6 +67,8 @@ func main() {
 		List: infos,
 		Title: title,
 	}
+
+	t := template.Must(template.New("default").Parse(tmpl))
 
 	check(t.Execute(os.Stdout, data))
 }
