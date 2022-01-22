@@ -28,7 +28,7 @@
       ul {
         box-sizing: border-box;
         flex: 1;
-        font-size: 0.75rem;
+        font-size: 0.9375rem;
         list-style: none;
         margin: 0;
         padding: 2rem;
@@ -47,16 +47,14 @@
       dl {
         align-items: center;
         display: grid;
+        grid: auto-flow / 1fr 1fr 1fr;
+        grid-gap: 0.5rem;
         margin: 0 auto;
         max-width: 50rem;
         width: 100%;
-        grid: auto-flow / 1fr 1fr 1fr;
-      }
-      dt {
-        font-size: 0.9375rem;
       }
       dd {
-        font-family: "Menlo", "Andale Mono", monospace;
+        font: 0.75rem/1 "Menlo", "Andale Mono", monospace;
         margin: 0;
         text-align: right;
       }
@@ -69,12 +67,6 @@
         vertical-align: middle;
         white-space: nowrap;
         width: 100%;
-      }
-      dt:first-child {
-        padding-left: 0;
-      }
-      dd:last-child {
-        padding-right: 0;
       }
     </style>
   </head>
@@ -91,7 +83,7 @@
           </dl>
         </li>
       {{- else}}
-        <li>&hellip;</li>
+        <li><span>&hellip;</span></li>
       {{- end}}
     </ul>
   </body>
