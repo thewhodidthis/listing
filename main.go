@@ -4,7 +4,7 @@ import (
 	"bufio"
 	_ "embed"
 	"flag"
-	"html/template"
+	"text/template"
 	"io/fs"
 	"log"
 	"os"
