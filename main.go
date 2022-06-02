@@ -68,7 +68,8 @@ func main() {
 		Title: title,
 	}
 
-	t := template.Must(template.New("default").Parse(tmpl))
+	funcMap := map[string]interface{}{"list": list}
+	t := template.Must(template.New("default").Funcs(template.FuncMap(funcMap)).Parse(tmpl))
 
 	check(t.Execute(os.Stdout, data))
 }
@@ -77,4 +78,8 @@ func check(err error) {
 	if err != nil {
 		log.Fatal("listing: ", err)
 	}
+}
+
+func list(args ...interface{}) []interface{} {
+	return args
 }
