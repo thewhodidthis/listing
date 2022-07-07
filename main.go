@@ -4,10 +4,10 @@ import (
 	"bufio"
 	_ "embed"
 	"flag"
-	"text/template"
 	"io/fs"
 	"log"
 	"os"
+	"text/template"
 )
 
 //go:embed index.html.tmpl
@@ -37,17 +37,18 @@ func main() {
 
 		check(err)
 
-		if fi.Size() == 0 {
+		// https://stackoverflow.com/questions/22744443
+		if (fi.Mode() & os.ModeCharDevice) == 0 {
+			scanner := bufio.NewScanner(os.Stdin)
+
+			for scanner.Scan() {
+				input = append(input, scanner.Text())
+			}
+
+			check(scanner.Err())
+		} else {
 			log.Fatal("listing: no input found")
 		}
-
-		scanner := bufio.NewScanner(os.Stdin)
-
-		for scanner.Scan() {
-			input = append(input, scanner.Text())
-		}
-
-		check(scanner.Err())
 	} else {
 		input = flag.Args()
 	}
@@ -61,10 +62,10 @@ func main() {
 	}
 
 	data := struct {
-		List []fs.FileInfo
+		List  []fs.FileInfo
 		Title string
 	}{
-		List: infos,
+		List:  infos,
 		Title: title,
 	}
 
