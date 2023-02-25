@@ -1,6 +1,6 @@
 ## about
 
-Static directory indexing on demand.
+Helps create static directory listings in HTML by default.
 
 ## setup
 
