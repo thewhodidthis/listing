@@ -45,6 +45,9 @@
       a:active {
         color: var(--active-color);
       }
+      a:focus {
+        outline: 1px dotted;
+      }
       main {
         box-sizing: border-box;
         padding: 2rem 2.625rem;
@@ -70,12 +73,8 @@
       dd {
         font: 0.6875rem/1 ui-monospace, monospace;
         margin: 0;
-        text-align: right;
-      }
-      dt,
-      dd {
-        box-sizing: border-box;
         overflow: hidden;
+        text-align: right;
         text-overflow: ellipsis;
         vertical-align: middle;
         white-space: nowrap;
