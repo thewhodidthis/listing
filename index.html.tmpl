@@ -65,16 +65,13 @@
         max-width: 50rem;
       }
       dl {
-        align-items: center;
         display: grid;
-        grid: auto-flow / 2fr 1.5fr 0.5fr;
         grid-gap: 0.5rem;
       }
       dd {
         font: 0.6875rem/1 ui-monospace, monospace;
         margin: 0;
         overflow: hidden;
-        text-align: right;
         text-overflow: ellipsis;
         vertical-align: middle;
         white-space: nowrap;
@@ -88,6 +85,15 @@
           --link-color: #ff0;
           --hover-color: #efefef;
           --active-color: #efefef;
+        }
+      }
+      @media screen and (min-width: 450px) {
+        dl {
+          align-items: center;
+          grid: auto-flow / 2fr 1.5fr 0.5fr;
+        }
+        dd {
+          text-align: right;
         }
       }
     </style>
