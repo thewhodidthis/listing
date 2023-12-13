@@ -6,7 +6,7 @@ Helps create static directory listings in HTML by default.
 
 Fetch latest from GitHub:
 
-```sh
+```
 go get github.com/thewhodidthis/listing
 ```
 
@@ -14,14 +14,14 @@ go get github.com/thewhodidthis/listing
 
 Pass in a list of files to index and optionally a title and/or a path to a custom template using the `-t` and `-x` flags respectively:
 
-```sh
+```
 # Override default title
 ls -A1 *.mp3 | listing -t Tracks > index.html
 ```
 
 Generate an Atom feed to match:
 
-```sh
+```
 # Override default template
 ls -d */ | listing -x feed.xml.tmpl > feed.xml
 ```
